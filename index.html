@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M09</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Saludar a los genios y preparar el ambiente para el aprendizaje.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy trabajaremos en algo muy especial: ¡diseñarán una nave espacial en TinkerCAD! Este reto requiere precisión, creatividad y mucha atención a las medidas y la simetría."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Si están listos para diseñar la nave más increíble, toquen su oreja derecha. Si aún están pensando en ideas, pongan las manos en su cintura."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos en agradecimiento por esta oportunidad de diseñar juntos. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos objetivos importantes: 1. Diseñaremos una nave espacial cumpliendo con las medidas exactas. 2. Usaremos simetría para alinear y organizar los elementos."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🤣 Actividad 2: State Change ⏰ Tiempo: 1.5 minutos</div>
+        <div class="subtitle">Reír sin control para mejorar el ánimo y la concentración.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Ejercicio de Risa".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, antes de empezar con nuestro reto espacial, vamos a recargar energía con un momento divertido. Durante 15 segundos, quiero que rían como si hubieran escuchado el chiste más gracioso de la galaxia. No importa si su risa es real o exagerada, ¡lo importante es que participen!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 7 "Cronómetro - 15 segundos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿Sabían que la risa libera endorfinas, también conocidas como las hormonas de la felicidad? Además, disminuye el estrés y mejora nuestro enfoque. Ahora que estamos relajados y recargados, estaremos listos para enfrentar cualquier reto que nos traiga la misión de hoy."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 9 minutos</div>
+        <div class="subtitle">Formar equipos y organizar tareas para el reto.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Formación de Parejas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy trabajaremos con las mismas parejas de la clase pasada. Tienen un minuto para encontrar a su compañero y sentarse juntos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro - 1 minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, un representante de cada equipo debe pasar por su Magic Tablet. Tienen un minuto para hacerlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Cronómetro - 1 minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (2 minutos):</strong> Proyectar Diapositiva 13 "Niveles del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy, diseñarán una nave espacial con alas simétricas. Pueden elegir entre tres niveles de dificultad: 
+                <ul>
+                    <li><strong>Rookie:</strong> Nave con alas simétricas en el plano YZ, midiendo exactamente 254 mm de largo, 254 mm de ancho y 90 mm de alto.</li>
+                    <li><strong>Master:</strong> (+) Añadan tren de aterrizaje y puerta trasera con rampa.</li>
+                    <li><strong>Hacker:</strong> (+) La nave debe tener 4 alas con 20 formas cada una, y ser simétrica en los planos YZ y ZX.</li>
+                </ul>
+                "</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1 minuto):</strong> Proyectar Diapositiva 14 "Planeación de Tareas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En esta fase, cada equipo tendrá tres minutos para definir las tareas necesarias para su nave espacial y organizarlas en su tablero Kanban. Identifiquen cuáles son las tareas prioritarias y cómo las repartirán entre los dos miembros del equipo. Recuerden que una buena organización es clave para completar el reto con éxito."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (3 minutos):</strong> Proyectar Diapositiva 15 "Cronómetro - 3 minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 33 minutos</div>
+        <div class="subtitle">Diseñar naves espaciales en TinkerCAD, aplicando simetría y precisión.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 16 "Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ha llegado el momento de poner a prueba su creatividad y habilidades técnicas. Hoy vamos a diseñar naves espaciales en TinkerCAD, y cada equipo podrá elegir su nivel de reto. ¡Hagan que su nave destaque entre las estrellas!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 17 "Niveles del Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Para este reto, pueden elegir entre tres niveles: 
+                <ul>
+                    <li><strong>Rookie:</strong> Diseñen una nave con alas simétricas en el plano YZ, midiendo exactamente 254 mm de largo, 254 mm de ancho y 90 mm de alto.</li>
+                    <li><strong>Master:</strong> (+) Agreguen tren de aterrizaje y una puerta trasera con rampa.</li>
+                    <li><strong>Hacker:</strong> (+) La nave debe tener al menos 4 alas, cada una compuesta por 20 formas, y ser simétrica en los planos YZ y ZX. ¡Elijan su nivel y manos a la obra!</li>
+                </ul>
+                "</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (25 minutos):</strong> Proyectar Diapositiva 18 "Cronómetro - 25 minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 19 "Galería de Arte Espacial".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, vamos a convertir nuestro salón en una galería de arte espacial. Quiero que dejen su trabajo abierto en las computadoras y se levanten de sus asientos. Tendrán tres minutos para recorrer el salón y ver las naves de sus compañeros. Presten atención a los detalles, comparen los diferentes enfoques y disfruten del talento de todos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (3 minutos):</strong> Proyectar Diapositiva 20 "Cronómetro - 3 minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1 minuto):</strong> Proyectar Diapositiva 21 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy completamos todos los objetivos de nuestra misión: 1. Diseñamos una nave espacial cumpliendo con las medidas exactas. 2. Usamos simetría para alinear y organizar los elementos. ¡Gran trabajo, Genios! Estoy seguro de que estas habilidades seguirán impulsando su creatividad en futuros proyectos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (1 minuto):</strong> Proyectar Diapositiva 22 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Excelente trabajo, Genios! Han demostrado creatividad, precisión y colaboración. Todos se llevan Mon-e por su esfuerzo. ¡Nos vemos en la próxima misión!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 5: Honor the Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Despedida y orden del espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 23 "Honor the Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, antes de despedirnos, es momento de mostrar respeto por nuestro espacio. Por favor, cada equipo pase al frente para devolver su Magic Tablet. Asegúrense también de que su área de trabajo quede ordenada. Un espacio limpio refleja un buen trabajo en equipo."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
